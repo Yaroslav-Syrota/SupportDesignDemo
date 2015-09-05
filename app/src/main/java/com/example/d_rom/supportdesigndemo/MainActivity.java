@@ -93,6 +93,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void setupViewPager(ViewPager _viewPager) {
         TabFragmentAdapter adapter = new TabFragmentAdapter(getSupportFragmentManager());
+        addAllFragments(adapter);
+        _viewPager.setAdapter(adapter);
+    }
+
+    private void addAllFragments(TabFragmentAdapter adapter) {
         adapter.addFragment(new SimpleListFragment(), "Tab 1");
         adapter.addFragment(new SimpleListFragment(), "Tab 2");
         adapter.addFragment(new SimpleListFragment(), "Long tab 3");
@@ -100,7 +105,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         adapter.addFragment(new SimpleListFragment(), "Tab 5");
         adapter.addFragment(new SimpleListFragment(), "Tab 6");
         adapter.addFragment(new SimpleListFragment(), "Tab 7");
-        _viewPager.setAdapter(adapter);
     }
 
 
