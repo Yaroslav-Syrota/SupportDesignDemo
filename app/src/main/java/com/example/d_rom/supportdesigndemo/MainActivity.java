@@ -13,6 +13,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +22,7 @@ import com.example.d_rom.supportdesigndemo.adapter.TabFragmentAdapter;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String TAG = "debug";
     private Toolbar mToolbar;
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
@@ -93,6 +95,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void setupViewPager(ViewPager _viewPager) {
         TabFragmentAdapter adapter = new TabFragmentAdapter(getSupportFragmentManager());
+        addAllFragments(adapter);
+        _viewPager.setAdapter(adapter);
+    }
+
+    private void addAllFragments(TabFragmentAdapter adapter) {
         adapter.addFragment(new SimpleListFragment(), "Tab 1");
         adapter.addFragment(new SimpleListFragment(), "Tab 2");
         adapter.addFragment(new SimpleListFragment(), "Long tab 3");
@@ -100,7 +107,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         adapter.addFragment(new SimpleListFragment(), "Tab 5");
         adapter.addFragment(new SimpleListFragment(), "Tab 6");
         adapter.addFragment(new SimpleListFragment(), "Tab 7");
-        _viewPager.setAdapter(adapter);
     }
 
 
@@ -155,5 +161,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         startActivity(new Intent(MainActivity.this,SecondActivity.class));
+        Log.d(TAG, "click-click");
     }
 }
